@@ -1,0 +1,35 @@
+.register-container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#698dc1;
+}
+
+.register-card{
+background:white;
+padding:40px;
+border-radius:12px;
+width:350px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+.register-card input,
+.register-card select{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.register-card button{
+width:100%;
+padding:12px;
+background:#4CAF50;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}

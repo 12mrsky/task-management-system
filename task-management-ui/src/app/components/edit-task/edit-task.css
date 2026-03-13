@@ -1,0 +1,37 @@
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+form{
+width:400px;
+margin:auto;
+padding:25px;
+border-radius:10px;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:6px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#ff9800;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:500;
+}
+
+button:hover{
+background:#e68900;
+}

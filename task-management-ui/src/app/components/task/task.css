@@ -1,0 +1,218 @@
+.task-container{
+width:90%;
+max-width:1050px;
+margin:auto;
+padding:30px;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header h2{
+color:#333;
+font-size:28px;
+font-weight:600;
+}
+
+/* ADD BUTTON */
+
+.add-btn{
+background:#4CAF50;
+color:white;
+padding:10px 18px;
+text-decoration:none;
+border-radius:6px;
+font-weight:500;
+transition:0.25s ease;
+box-shadow:0 3px 8px rgba(0,0,0,0.15);
+}
+
+.add-btn:hover{
+background:#43a047;
+transform:translateY(-2px);
+box-shadow:0 5px 12px rgba(0,0,0,0.2);
+}
+
+/* SEARCH + FILTER */
+
+.controls{
+display:flex;
+gap:15px;
+margin-bottom:20px;
+}
+
+.controls input{
+padding:10px;
+border:1px solid #ddd;
+border-radius:6px;
+width:220px;
+transition:0.2s;
+}
+
+.controls input:focus{
+outline:none;
+border-color:#3f51b5;
+box-shadow:0 0 5px rgba(63,81,181,0.3);
+}
+
+.controls select{
+padding:10px;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+/* TABLE */
+
+.task-table{
+width:100%;
+border-collapse:separate;
+border-spacing:0;
+background:white;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+border-radius:10px;
+overflow:hidden;
+}
+
+.task-table thead{
+background:#4b5cc4;
+color:white;
+}
+
+.task-table th{
+padding:14px;
+font-weight:600;
+}
+
+.task-table td{
+padding:14px;
+border-bottom:1px solid #eee;
+}
+
+/* ROW HOVER EFFECT */
+
+.task-table tbody tr{
+transition:all 0.25s ease;
+}
+
+.task-table tbody tr:hover{
+background:#f6f8ff;
+transform:scale(1.01);
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* STATUS */
+
+.status{
+padding:6px 14px;
+border-radius:20px;
+font-size:13px;
+font-weight:500;
+}
+
+.pending{
+background:#fff4d6;
+color:#b78103;
+}
+
+.completed{
+background:#e6f9ed;
+color:#1a7f37;
+}
+
+/* ACTION BUTTONS */
+
+.actions{
+display:flex;
+gap:10px;
+}
+
+.edit-btn{
+background:#2196F3;
+border:none;
+color:white;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.edit-btn:hover{
+background:#1e88e5;
+transform:translateY(-1px);
+}
+
+.delete-btn{
+background:#f44336;
+border:none;
+color:white;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.delete-btn:hover{
+background:#e53935;
+transform:translateY(-1px);
+}
+
+/* PAGINATION */
+
+.pagination{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:20px;
+align-items:center;
+}
+
+.pagination button{
+padding:7px 16px;
+border:none;
+background:#4b5cc4;
+color:white;
+border-radius:6px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.pagination button:hover{
+background:#3d4bb0;
+}
+
+.pagination button:disabled{
+background:#ccc;
+cursor:not-allowed;
+}
+.task-table td,
+.task-table th{
+white-space: nowrap;
+}
+
+.task-table{
+width:100%;
+table-layout:auto;
+}
+
+.task-container{
+width:95%;
+max-width:1300px;
+margin:auto;
+}
+
+.task-table{
+width:100%;
+table-layout:auto;
+}
+
+.task-table td,
+.task-table th{
+white-space:nowrap;
+padding:12px;
+}

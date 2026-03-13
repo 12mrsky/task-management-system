@@ -1,0 +1,59 @@
+<h2>Create Task</h2>
+
+<form (ngSubmit)="addTask()">
+
+<label>Title</label>
+<input
+type="text"
+[(ngModel)]="task.title"
+name="title"
+required
+>
+
+<br><br>
+
+<label>Description</label>
+<input
+type="text"
+[(ngModel)]="task.description"
+name="description"
+required
+>
+
+<br><br>
+
+<label>Assign Employee</label>
+
+<select [(ngModel)]="task.assignedTo" name="assignedTo" required>
+
+<option value="">Select Employee</option>
+
+<option *ngFor="let emp of employees" [value]="emp.userId">
+{{emp.name}} ({{emp.email}})
+</option>
+
+</select>
+
+<br><br>
+
+<label>Deadline</label>
+<input
+type="datetime-local"
+[(ngModel)]="task.dueDate"
+name="dueDate"
+required
+>
+
+<br><br>
+
+<label>Status</label>
+<select [(ngModel)]="task.status" name="status">
+<option value="Pending">Pending</option>
+<option value="Completed">Completed</option>
+</select>
+
+<br><br>
+
+<button type="submit">Create Task</button>
+
+</form>

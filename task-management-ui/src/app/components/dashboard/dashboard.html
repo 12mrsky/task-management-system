@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+
+<h1 class="title">Task Dashboard</h1>
+
+<div class="card-container">
+
+<div class="card total">
+<h3>Total Tasks</h3>
+<p>{{totalTasks}}</p>
+</div>
+
+<div class="card completed">
+<h3>Completed</h3>
+<p>{{completedTasks}}</p>
+</div>
+
+<div class="card pending">
+<h3>Pending</h3>
+<p>{{pendingTasks}}</p>
+</div>
+
+<div class="card overdue">
+<h3>Overdue</h3>
+<p>{{overdueTasks}}</p>
+</div>
+
+</div>
+
+<div class="chart-container">
+<canvas id="taskChart"></canvas>
+</div>
+
+<div class="actions">
+
+<a routerLink="/tasks" class="btn">View Tasks</a>
+
+<a *ngIf="role==='Admin'" routerLink="/add-task" class="btn primary">
+Add Task
+</a>
+
+</div>
+
+</div>

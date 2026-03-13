@@ -1,0 +1,115 @@
+<div class="task-container">
+
+<div class="header">
+<h2>Task List</h2>
+
+<a *ngIf="role==='Admin'" routerLink="/add-task" class="add-btn">
++ Add Task
+</a>
+
+</div>
+
+<div class="controls">
+
+<input
+type="text"
+placeholder="Search tasks..."
+class="search-input"
+(keyup)="searchTask($event)"
+>
+
+<select (change)="filterStatus($event)">
+<option value="All">All</option>
+<option value="Pending">Pending</option>
+<option value="Completed">Completed</option>
+</select>
+
+</div>
+
+<table class="task-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Description</th>
+<th>Assigned Employee</th>
+<th>Email</th>
+<th>Deadline</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let task of paginatedTasks">
+
+<td>{{task.taskId}}</td>
+<td>{{task.title}}</td>
+<td>{{task.description}}</td>
+<td>{{task.assignedName}}</td>
+<td>{{task.assignedEmail}}</td>
+<td>{{task.dueDate | date:'medium'}}</td>
+
+<td>
+
+<span
+class="status"
+[ngClass]="{
+'pending': task.status === 'Pending',
+'completed': task.status === 'Completed'
+}">
+{{task.status}}
+</span>
+
+</td>
+
+<td class="actions">
+
+<!-- ADMIN ACTIONS -->
+<button
+*ngIf="role==='Admin'"
+class="edit-btn"
+[routerLink]="['/edit-task',task.taskId]">
+Edit
+</button>
+
+<button
+*ngIf="role==='Admin'"
+class="delete-btn"
+(click)="deleteTask(task.taskId)">
+Delete
+</button>
+
+<!-- EMPLOYEE ACTION -->
+<button
+*ngIf="role==='Employee' && task.status==='Pending'"
+class="complete-btn"
+(click)="markComplete(task)">
+Mark Complete
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="pagination">
+
+<button (click)="prevPage()" [disabled]="currentPage === 1">
+Prev
+</button>
+
+<span>Page {{currentPage}} / {{totalPages}}</span>
+
+<button (click)="nextPage()" [disabled]="currentPage === totalPages">
+Next
+</button>
+
+</div>
+
+</div>

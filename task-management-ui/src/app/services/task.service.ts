@@ -1,0 +1,51 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Task } from '../models/tasks';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TaskService {
+
+  private apiUrl = "http://localhost:5086/api";
+
+  constructor(private http: HttpClient) {}
+
+  login(data:any){
+    return this.http.post(`${this.apiUrl}/Auth/login`, data);
+  }
+
+  register(data:any){
+    return this.http.post(`${this.apiUrl}/Auth/register`, data);
+  }
+
+  getEmployees(){
+    return this.http.get(`${this.apiUrl}/Auth/employees`);
+  }
+
+  getTasks(): Observable<Task[]> {
+
+    const userId = localStorage.getItem("userId");
+    const role = localStorage.getItem("role");
+
+    if(role === "Employee"){
+      return this.http.get<Task[]>(`${this.apiUrl}/tasks?userId=${userId}`);
+    }
+
+    return this.http.get<Task[]>(`${this.apiUrl}/tasks`);
+  }
+
+  addTask(task: Task): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/tasks`, task);
+  }
+
+  updateTask(id: number, task: Task): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/tasks/${id}`, task);
+  }
+
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/tasks/${id}`);
+  }
+
+}

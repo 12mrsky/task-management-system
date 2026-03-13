@@ -9,6 +9,7 @@ import { Task } from '../models/tasks';
 export class TaskService {
 
 private apiUrl = "https://task-management-api-0lxj.onrender.com/api";
+
   constructor(private http: HttpClient) {}
 
   login(data:any){
@@ -35,9 +36,9 @@ private apiUrl = "https://task-management-api-0lxj.onrender.com/api";
     return this.http.get<Task[]>(`${this.apiUrl}/tasks`);
   }
 
-  addTask(task: Task): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/tasks`, task);
-  }
+  addTask(task:any){
+  return this.http.post(`${this.apiUrl}/Tasks`, task);
+}
 
   updateTask(id: number, task: Task): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/tasks/${id}`, task);

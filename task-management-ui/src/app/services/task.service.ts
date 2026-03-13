@@ -8,8 +8,7 @@ import { Task } from '../models/tasks';
 })
 export class TaskService {
 
-  private apiUrl = "http://localhost:5086/api";
-
+private apiUrl = "https://task-management-api-0lxj.onrender.com/api";
   constructor(private http: HttpClient) {}
 
   login(data:any){

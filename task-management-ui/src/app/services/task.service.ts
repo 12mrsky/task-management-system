@@ -10,42 +10,42 @@ export class TaskService {
 
 private apiUrl = "https://task-management-api-0lxj.onrender.com/api";
 
-  constructor(private http: HttpClient) {}
+constructor(private http: HttpClient) {}
 
-  login(data:any){
-    return this.http.post(`${this.apiUrl}/Auth/login`, data);
-  }
-
-  register(data:any){
-    return this.http.post(`${this.apiUrl}/Auth/register`, data);
-  }
-
-  getEmployees(){
-    return this.http.get(`${this.apiUrl}/Auth/employees`);
-  }
-
-  getTasks(): Observable<Task[]> {
-
-    const userId = localStorage.getItem("userId");
-    const role = localStorage.getItem("role");
-
-    if(role === "Employee"){
-      return this.http.get<Task[]>(`${this.apiUrl}/tasks?userId=${userId}`);
-    }
-
-    return this.http.get<Task[]>(`${this.apiUrl}/tasks`);
-  }
-
-  addTask(task:any){
-  return this.http.post(`${this.apiUrl}/Tasks`, task);
+login(data:any){
+return this.http.post(`${this.apiUrl}/Auth/login`, data);
 }
 
-  updateTask(id: number, task: Task): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/tasks/${id}`, task);
-  }
+register(data:any){
+return this.http.post(`${this.apiUrl}/Auth/register`, data);
+}
 
-  deleteTask(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/tasks/${id}`);
-  }
+getEmployees(){
+return this.http.get(`${this.apiUrl}/Auth/employees`);
+}
+
+getTasks(): Observable<Task[]> {
+
+const userId = localStorage.getItem("userId");
+const role = localStorage.getItem("role");
+
+if(role === "Employee"){
+return this.http.get<Task[]>(`${this.apiUrl}/tasks?userId=${userId}`);
+}
+
+return this.http.get<Task[]>(`${this.apiUrl}/tasks`);
+}
+
+addTask(task:any){
+return this.http.post(`${this.apiUrl}/Tasks`, task);
+}
+
+updateTask(id: number, task: Task): Observable<any> {
+return this.http.put<any>(`${this.apiUrl}/tasks/${id}`, task);
+}
+
+deleteTask(id: number): Observable<any> {
+return this.http.delete<any>(`${this.apiUrl}/tasks/${id}`);
+}
 
 }

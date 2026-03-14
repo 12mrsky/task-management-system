@@ -1,31 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-main-layout',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './main-layout.html',
-  styleUrls: ['./main-layout.css']
+selector: 'app-main-layout',
+standalone: true,
+imports: [CommonModule, RouterModule],
+templateUrl: './main-layout.html',
+styleUrls: ['./main-layout.css']
 })
-export class MainLayout {
+export class MainLayout implements OnInit {
 
-  role: string = '';
+role: string = '';
 
-  constructor(private router: Router) {
+constructor(private router: Router) {}
 
-    // get role from localStorage
-    this.role = localStorage.getItem('role') || '';
+ngOnInit(): void {
+// Get role from localStorage when component loads
+this.role = localStorage.getItem('role') || '';
+}
 
-  }
+logout(): void {
+// clear login data
+localStorage.clear();
 
-  logout(){
+// redirect to login page
+this.router.navigate(['/']);
 
-    localStorage.clear();
-
-    this.router.navigate(['/']);
-
-  }
+}
 
 }

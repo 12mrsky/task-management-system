@@ -11,11 +11,14 @@ import { EditTaskComponent } from './components/edit-task/edit-task';
 import { MainLayout } from './layout/main-layout/main-layout';
 import { authGuard } from './guards/auth-guard';
 
+import { ManageUsersComponent } from './components/manage-users/manage-users';
+
 export const routes: Routes = [
 
 { path:'', component:LoginComponent },
 
 { path:'register', component:RegisterComponent },
+{ path:'manage-users', component:ManageUsersComponent },
 
 {
 path:'',

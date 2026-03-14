@@ -52,5 +52,14 @@ return this.http.put<any>(`${this.apiUrl}/tasks/${id}`, task);
 deleteTask(id: number): Observable<any> {
 return this.http.delete<any>(`${this.apiUrl}/tasks/${id}`);
 }
+getUsers(){
+return this.http.get(`${this.apiUrl}/Auth/users`);
+}
+
+resetPassword(id:number,password:string){
+return this.http.put(`${this.apiUrl}/Auth/reset-password/${id}`,{
+newPassword:password
+});
+}
 
 }

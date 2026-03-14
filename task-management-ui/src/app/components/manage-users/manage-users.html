@@ -1,0 +1,36 @@
+<h2>Manage Users</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+<th>Reset Password</th>
+</tr>
+
+<tr *ngFor="let user of users">
+
+<td>{{user.userId}}</td>
+<td>{{user.name}}</td>
+<td>{{user.email}}</td>
+<td>{{user.role}}</td>
+
+<td>
+
+<input
+type="password"
+[(ngModel)]="newPassword"
+placeholder="New Password"
+>
+
+<button (click)="resetPassword(user.userId)">
+Reset
+</button>
+
+</td>
+
+</tr>
+
+</table>

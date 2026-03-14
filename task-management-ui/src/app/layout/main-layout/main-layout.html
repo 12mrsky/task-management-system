@@ -1,49 +1,66 @@
 <div class="layout">
 
   <!-- SIDEBAR -->
+
   <aside class="sidebar">
 
-    <h2 class="logo">TaskPro</h2>
+```
+<h2 class="logo">TaskPro</h2>
 
-    <nav>
+<nav>
 
-      <a routerLink="/dashboard" routerLinkActive="active">
-        📊 Dashboard
-      </a>
+  <!-- Dashboard -->
+  <a routerLink="/dashboard" routerLinkActive="active">
+    📊 Dashboard
+  </a>
 
-      <a routerLink="/tasks" routerLinkActive="active">
-        📋 Tasks
-      </a>
+  <!-- Tasks -->
+  <a routerLink="/tasks" routerLinkActive="active">
+    📋 Tasks
+  </a>
 
-      <a 
-        *ngIf="role==='Admin'" 
-        routerLink="/add-task" 
-        routerLinkActive="active">
-        ➕ Create Task
-      </a>
+  <!-- Admin: Manage Users -->
+  <a
+    *ngIf="role === 'Admin'"
+    routerLink="/manage-users"
+    routerLinkActive="active">
+    👥 Manage Users
+  </a>
 
-    </nav>
+  <!-- Admin: Create Task -->
+  <a
+    *ngIf="role === 'Admin'"
+    routerLink="/add-task"
+    routerLinkActive="active">
+    ➕ Create Task
+  </a>
+
+</nav>
+```
 
   </aside>
 
   <!-- MAIN CONTENT -->
+
   <main class="content">
 
-    <!-- TOPBAR -->
-    <header class="topbar">
+```
+<!-- TOPBAR -->
+<header class="topbar">
 
-      <h3>Task Management System</h3>
+  <h3>Task Management System</h3>
 
-      <button class="logout" (click)="logout()">
-        Logout
-      </button>
+  <button class="logout" (click)="logout()">
+    Logout
+  </button>
 
-    </header>
+</header>
 
-    <!-- PAGE CONTENT -->
-    <div class="page">
-      <router-outlet></router-outlet>
-    </div>
+<!-- PAGE CONTENT -->
+<div class="page">
+  <router-outlet></router-outlet>
+</div>
+```
 
   </main>
 

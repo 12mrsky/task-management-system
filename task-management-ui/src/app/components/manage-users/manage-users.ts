@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,25 +23,29 @@ this.loadUsers()
 }
 
 loadUsers(){
+
 this.taskService.getUsers().subscribe((data:any)=>{
 this.users=data
 })
+
 }
 
 resetPassword(userId:number){
+
 this.taskService.resetPassword(userId,this.newPassword)
 .subscribe(()=>{
 alert("Password Reset Successfully")
 this.newPassword=''
 })
+
 }
 
 deleteUser(userId:number){
 
-if(confirm("Are you sure you want to delete this user?")){
+if(confirm("Delete this user?")){
 
 this.taskService.deleteUser(userId).subscribe(()=>{
-alert("User Deleted Successfully")
+alert("User deleted")
 this.loadUsers()
 })
 

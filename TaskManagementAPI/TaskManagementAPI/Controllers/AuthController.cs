@@ -79,6 +79,48 @@ namespace TaskManagementAPI.Controllers
             return Ok(employees);
 
         }
+        [HttpGet("users")]
+public IActionResult GetUsers()
+{
+    var users = _context.Users
+        .Select(u => new
+        {
+            u.UserId,
+            u.Name,
+            u.Email,
+            u.Role
+        })
+        .ToList();
+
+    return Ok(users);
+}
+[HttpPut("reset-password/{id}")]
+public IActionResult ResetPassword(int id, [FromBody] ResetPasswordDto dto)
+{
+    var user = _context.Users.FirstOrDefault(u => u.UserId == id);
+
+    if (user == null)
+        return NotFound();
+
+    user.Password = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+
+    _context.SaveChanges();
+
+    return Ok("Password reset successfully");
+}
+[HttpDelete("users/{id}")]
+public IActionResult DeleteUser(int id)
+{
+    var user = _context.Users.Find(id);
+
+    if(user == null)
+        return NotFound();
+
+    _context.Users.Remove(user);
+    _context.SaveChanges();
+
+    return Ok();
+}
 
     }
 }

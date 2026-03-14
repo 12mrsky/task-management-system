@@ -19,15 +19,58 @@
 
 <td>
 
+<div class="users-container">
+
+<h2>Manage Users</h2>
+
+<table class="users-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+<th>Reset Password</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let user of users">
+
+<td>{{user.userId}}</td>
+<td>{{user.name}}</td>
+<td>{{user.email}}</td>
+
+<td>
+<span class="role-badge" [ngClass]="user.role.toLowerCase()">
+{{user.role}}
+</span>
+</td>
+
+<td class="actions">
+
 <input
 type="password"
 [(ngModel)]="newPassword"
 placeholder="New Password"
->
+class="password-input">
 
-<button (click)="resetPassword(user.userId)">
-Reset
-</button>
+<button
+class="reset-btn"
+(click)="resetPassword(user.userId)">
+Reset </button>
+<button class="delete-btn">Delete</button>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
 
 </td>
 

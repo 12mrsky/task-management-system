@@ -1,0 +1,78 @@
+.users-container{
+width:90%;
+max-width:1000px;
+margin:auto;
+padding:30px;
+}
+
+.users-container h2{
+margin-bottom:20px;
+color:#333;
+}
+
+.users-table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.users-table thead{
+background:#4f5dbb;
+color:white;
+}
+
+.users-table th,
+.users-table td{
+padding:14px;
+text-align:left;
+border-bottom:1px solid #eee;
+}
+
+.users-table tr:hover{
+background:#f7f7f7;
+}
+
+.actions{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.password-input{
+padding:8px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.reset-btn{
+background:#ff9800;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.reset-btn:hover{
+background:#e68900;
+}
+
+.role-badge{
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.role-badge.admin{
+background:#e3f2fd;
+color:#1976d2;
+}
+
+.role-badge.employee{
+background:#e8f5e9;
+color:#2e7d32;
+}

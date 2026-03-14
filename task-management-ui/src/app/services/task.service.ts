@@ -61,5 +61,8 @@ return this.http.put(`${this.apiUrl}/Auth/reset-password/${id}`,{
 newPassword:password
 });
 }
+deleteUser(id:number){
+return this.http.delete(`${this.apiUrl}/Auth/users/${id}`);
+}
 
 }

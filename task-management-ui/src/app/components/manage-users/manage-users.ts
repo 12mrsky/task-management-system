@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TaskService } from '../../services/task.service';
 
 @Component({
 selector:'app-manage-users',
@@ -33,6 +33,19 @@ this.taskService.resetPassword(userId,this.newPassword)
 alert("Password Reset Successfully")
 this.newPassword=''
 })
+}
+
+deleteUser(userId:number){
+
+if(confirm("Are you sure you want to delete this user?")){
+
+this.taskService.deleteUser(userId).subscribe(()=>{
+alert("User Deleted Successfully")
+this.loadUsers()
+})
+
+}
+
 }
 
 }

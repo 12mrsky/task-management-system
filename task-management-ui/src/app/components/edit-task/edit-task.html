@@ -20,6 +20,31 @@ name="description"
 required
 >
 
+<select
+[(ngModel)]="task.assignedUserId"
+name="assignedUserId"
+( change )="selectEmployee($event)"
+required>
+
+<option value="">Select Employee</option>
+
+<option
+*ngFor="let emp of employees"
+[value]="emp.id">
+
+{{emp.name}} ({{emp.email}})
+
+</option>
+
+</select>
+
+<input
+type="datetime-local"
+[(ngModel)]="task.dueDate"
+name="dueDate"
+required
+>
+
 <select [(ngModel)]="task.status" name="status">
 
 <option value="Pending">Pending</option>
@@ -27,7 +52,9 @@ required
 
 </select>
 
-<button type="submit">Update Task</button>
+<button type="submit">
+Update Task
+</button>
 
 </form>
 

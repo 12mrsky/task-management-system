@@ -68,12 +68,14 @@ class="status"
 <td class="actions">
 
 <!-- ADMIN ACTIONS -->
+@if (role === 'Admin') {
 <button
-*ngIf="role==='Admin'"
 class="edit-btn"
-[routerLink]="['/edit-task',task.taskId]">
+[routerLink]="['/edit-task', task.taskId]"
+[state]="{task: task}">
 Edit
 </button>
+}
 
 <button
 *ngIf="role==='Admin'"

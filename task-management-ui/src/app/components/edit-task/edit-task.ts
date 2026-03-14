@@ -17,8 +17,14 @@ task:any={
 taskId:0,
 title:'',
 description:'',
+assignedUserId:'',
+assignedName:'',
+assignedEmail:'',
+dueDate:'',
 status:'Pending'
 }
+
+employees:any[]=[];
 
 constructor(
 private route:ActivatedRoute,
@@ -31,11 +37,28 @@ ngOnInit(){
 const id = Number(this.route.snapshot.paramMap.get('id'));
 
 if(id){
-
 this.taskService.getTaskById(id).subscribe((data:any)=>{
-this.task = data;
+this.task=data;
+});
+}
+
+// load employees
+this.taskService.getEmployees().subscribe((data:any)=>{
+this.employees=data;
 });
 
+}
+
+selectEmployee(event:any){
+
+const employeeId = event.target.value;
+
+const emp = this.employees.find((e:any)=>e.id==employeeId);
+
+if(emp){
+this.task.assignedUserId = emp.id;
+this.task.assignedName = emp.name;
+this.task.assignedEmail = emp.email;
 }
 
 }
@@ -46,7 +69,7 @@ this.taskService.updateTask(this.task.taskId,this.task)
 .subscribe(()=>{
 alert("Task Updated Successfully");
 this.router.navigate(['/tasks']);
-});
+})
 
 }
 

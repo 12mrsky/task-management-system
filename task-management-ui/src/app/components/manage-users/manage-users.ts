@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 selector:'app-manage-users',
 standalone:true,
 imports:[CommonModule,FormsModule],
-templateUrl:'./manage-users.html'
+templateUrl:'./manage-users.html',
+styleUrls:['./manage-users.css']
 })
 export class ManageUsersComponent implements OnInit{
 

@@ -28,19 +28,13 @@ private taskService:TaskService
 
 ngOnInit(){
 
-const id = Number(this.route.snapshot.paramMap.get('id'))
+const id = Number(this.route.snapshot.paramMap.get('id'));
 
 if(id){
 
-this.taskService.getTasks().subscribe((data:any)=>{
-
-const foundTask=data.find((t:any)=>t.taskId==id)
-
-if(foundTask){
-this.task=foundTask
-}
-
-})
+this.taskService.getTaskById(id).subscribe((data:any)=>{
+this.task = data;
+});
 
 }
 
@@ -50,9 +44,9 @@ updateTask(){
 
 this.taskService.updateTask(this.task.taskId,this.task)
 .subscribe(()=>{
-alert("Task Updated Successfully")
-this.router.navigate(['/tasks'])
-})
+alert("Task Updated Successfully");
+this.router.navigate(['/tasks']);
+});
 
 }
 

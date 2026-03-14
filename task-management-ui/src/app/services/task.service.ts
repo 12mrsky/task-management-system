@@ -36,6 +36,11 @@ return this.http.get<Task[]>(`${this.apiUrl}/tasks?userId=${userId}`);
 return this.http.get<Task[]>(`${this.apiUrl}/tasks`);
 }
 
+// ⭐ NEW FUNCTION
+getTaskById(id:number): Observable<Task>{
+return this.http.get<Task>(`${this.apiUrl}/tasks/${id}`);
+}
+
 addTask(task:any){
 return this.http.post(`${this.apiUrl}/Tasks`, task);
 }

@@ -1,6 +1,8 @@
+<div class="edit-container">
+
 <h2>Edit Task</h2>
 
-<form (ngSubmit)="updateTask()">
+<form (ngSubmit)="updateTask()" class="task-form">
 
 <input
 type="text"
@@ -10,8 +12,6 @@ name="title"
 required
 >
 
-<br><br>
-
 <input
 type="text"
 placeholder="Description"
@@ -20,8 +20,6 @@ name="description"
 required
 >
 
-<br><br>
-
 <select [(ngModel)]="task.status" name="status">
 
 <option value="Pending">Pending</option>
@@ -29,8 +27,8 @@ required
 
 </select>
 
-<br><br>
-
 <button type="submit">Update Task</button>
 
 </form>
+
+</div>

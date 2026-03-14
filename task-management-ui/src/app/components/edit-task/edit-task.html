@@ -23,14 +23,14 @@ required
 <select
 [(ngModel)]="task.assignedUserId"
 name="assignedUserId"
-( change )="selectEmployee($event)"
+(change)="selectEmployee($event)"
 required>
 
 <option value="">Select Employee</option>
 
 <option
 *ngFor="let emp of employees"
-[value]="emp.id">
+[value]="emp.userId">
 
 {{emp.name}} ({{emp.email}})
 

@@ -41,3 +41,9 @@ h2{
 text-align:center;
 margin-bottom:20px;
 }
+select{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}

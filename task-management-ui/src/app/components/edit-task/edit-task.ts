@@ -37,8 +37,10 @@ ngOnInit(){
 const id = Number(this.route.snapshot.paramMap.get('id'));
 
 if(id){
-this.taskService.getTaskById(id).subscribe((data:any)=>{
-this.task=data;
+this.taskService.getEmployees().subscribe((data:any)=>{
+
+this.employees = data;
+
 });
 }
 

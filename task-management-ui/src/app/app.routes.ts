@@ -15,25 +15,28 @@ import { ManageUsersComponent } from './components/manage-users/manage-users';
 
 export const routes: Routes = [
 
-{ path:'', component:LoginComponent },
+  // Public routes
+  { path: '', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
-{ path:'register', component:RegisterComponent },
-{ path:'manage-users', component:ManageUsersComponent },
+  // Protected routes with layout
+  {
+    path: '',
+    component: MainLayout,
+    canActivate: [authGuard],
+    children: [
 
-{
-path:'',
-component:MainLayout,
-canActivate:[authGuard],
-children:[
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'tasks', component: TaskComponent },
+      { path: 'add-task', component: AddTaskComponent },
 
-{ path:'dashboard', component:DashboardComponent },
-{ path:'tasks', component:TaskComponent },
-{ path:'add-task', component:AddTaskComponent },
+      // Edit task
+      { path: 'edit-task/:id', component: EditTaskComponent },
 
-// ⭐ EDIT PAGE ROUTE
-{ path:'edit-task/:id', component:EditTaskComponent }
+      // ⭐ Manage Users (FIXED)
+      { path: 'manage-users', component: ManageUsersComponent }
 
-]
-}
+    ]
+  }
 
 ];

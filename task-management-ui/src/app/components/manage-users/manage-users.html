@@ -4,63 +4,67 @@
 
   <table class="users-table">
 
-```
-<thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Role</th>
-    <th>Reset Password</th>
-    <th>Actions</th>
-  </tr>
-</thead>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Reset Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
 
-<tbody>
+    <tbody>
 
-  <tr *ngFor="let user of users">
+      <tr *ngFor="let user of users">
 
-    <td>{{user.userId}}</td>
+        <td>{{user.userId}}</td>
 
-    <td>{{user.name}}</td>
+        <td>{{user.name}}</td>
 
-    <td>{{user.email}}</td>
+        <td>{{user.email}}</td>
 
-    <td>
-      <span class="role-badge" [ngClass]="user.role.toLowerCase()">
-        {{user.role}}
-      </span>
-    </td>
+        <td>
+          <span class="role-badge" [ngClass]="user.role?.toLowerCase()">
+            {{user.role}}
+          </span>
+        </td>
 
-    <td>
-      <input
-        type="password"
-        [(ngModel)]="newPassword"
-        placeholder="New Password"
-        class="password-input"
-      >
-    </td>
+        <td>
+          <input
+            type="password"
+            [(ngModel)]="user.newPassword"
+            placeholder="New Password"
+            class="password-input"
+          >
+        </td>
 
-    <td class="actions">
+        <td class="actions">
 
-      <button
-        class="reset-btn"
-        (click)="resetPassword(user.userId)">
-        Reset
-      </button>
+          <button
+            class="reset-btn"
+            (click)="resetPassword(user)">
+            Reset
+          </button>
 
-      <button
-        class="delete-btn"
-        (click)="deleteUser(user.userId)">
-        Delete
-      </button>
+          <button
+            class="delete-btn"
+            (click)="deleteUser(user.userId)">
+            Delete
+          </button>
 
-    </td>
+        </td>
 
-  </tr>
+      </tr>
 
-</tbody>
-```
+      <tr *ngIf="users.length === 0">
+        <td colspan="6" style="text-align:center;padding:20px">
+          No users found
+        </td>
+      </tr>
+
+    </tbody>
 
   </table>
 

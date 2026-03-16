@@ -1,56 +1,80 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 
 @Component({
-selector:'app-manage-users',
-standalone:true,
-imports:[CommonModule,FormsModule],
-templateUrl:'./manage-users.html',
-styleUrls:['./manage-users.css']
+  selector: 'app-manage-users',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './manage-users.html',
+  styleUrls: ['./manage-users.css']
 })
-export class ManageUsersComponent implements OnInit{
+export class ManageUsersComponent implements OnInit {
 
-users:any[]=[]
-newPassword=''
+  users: any[] = [];
 
-constructor(private taskService:TaskService){}
+  constructor(private taskService: TaskService) {}
 
-ngOnInit(){
-this.loadUsers()
-}
+  ngOnInit(): void {
+    this.loadUsers();
+  }
 
-loadUsers(){
+  loadUsers() {
 
-this.taskService.getUsers().subscribe((data:any)=>{
-this.users=data
-})
+    this.taskService.getUsers().subscribe({
+      next: (data: any) => {
 
-}
+        console.log("API Response:", data);
 
-resetPassword(userId:number){
+        // Fix for .NET returning $values
+        if (data.$values) {
+          this.users = data.$values;
+        } else {
+          this.users = data;
+        }
 
-this.taskService.resetPassword(userId,this.newPassword)
-.subscribe(()=>{
-alert("Password Reset Successfully")
-this.newPassword=''
-})
+      },
+      error: (err) => {
+        console.error("Error loading users:", err);
+      }
+    });
 
-}
+  }
 
-deleteUser(userId:number){
+  resetPassword(user: any) {
 
-if(confirm("Delete this user?")){
+    if (!user.newPassword || user.newPassword.length < 4) {
+      alert("Enter a valid password");
+      return;
+    }
 
-this.taskService.deleteUser(userId).subscribe(()=>{
-alert("User deleted")
-this.loadUsers()
-})
+    this.taskService.resetPassword(user.userId, user.newPassword)
+      .subscribe(() => {
 
-}
+        alert("Password reset successfully");
 
-}
+        user.newPassword = '';
+
+      });
+
+  }
+
+  deleteUser(userId: number) {
+
+    if (confirm("Delete this user?")) {
+
+      this.taskService.deleteUser(userId)
+        .subscribe(() => {
+
+          alert("User deleted");
+
+          this.loadUsers();
+
+        });
+
+    }
+
+  }
 
 }
